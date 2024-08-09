@@ -5,6 +5,7 @@
 #include "gestion.h"
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -37,6 +38,7 @@ void reportes(){
 //funcion para imprimir los datos del usuario en base a su nombre
 void verHistorial(){
 
+    system ("cls");
     string dni;
     cout << "=================== VER HISTORIAL ====================" << endl;
     cout << "Ingrese el DNI del usuario cuyo historial desea ver: " << endl;
@@ -92,7 +94,9 @@ void completarPago(){
         if (factura[i].DNI == dni) {
             encontrado = true;
             cout << "Monto a pagar del usuario:" << endl;
-            cout << " - Precio por cafeteria: " << endl;
+            cout << " Precio por cafeteria: " << endl;
+            cout << " Precio por habitacion: " << endl;
+            cout << " TOTAL A PAGAR: " << endl;
             cout << factura[i].nombre << " - $" << factura[i].totalPagar << endl;
             
             float montoPago;
