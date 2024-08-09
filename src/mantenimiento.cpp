@@ -1,19 +1,16 @@
 #include "mantenimiento.h"
+#include "estructura.h"
 #include <iostream>
-using namespace std;
+#include <string>
 
-int nCategorias=0;
-string CATEGORIA[20];
-float PRECIO[20];
-int nPisos=0;
-piso PISO[20];
+using namespace std;
 
 void iniciar(){
 	string categoria;
 	float precio;
 
 	system("cls");
-	cout<<"======================= INICIO ======================="<<endl<<endl;
+	cout<<"====================== INICIAR ======================="<<endl<<endl;
 	cout<<"Complete los siguientes datos:"<<endl<<endl;
 	
 	// ingresar numero de pisos	
@@ -39,7 +36,10 @@ void iniciar(){
 	for(int i=0; i<nCategorias; i++){
 		cout<<"   "<<CATEGORIA[i]<<" - S/ "<<PRECIO[i]<<endl;
 	}
-	cout<<endl<<"------------------------------------------------------"<<endl<<endl;
+	cout<<"------------------------------------------------------"<<endl<<endl;
+	
+	system("pause");
+	system("cls");
 	   
 	// ingresar numero de habitaciones por piso
 	for(int i=0; i<nPisos; i++){
@@ -52,17 +52,26 @@ void iniciar(){
 	cout<<"Asigne categorias a cada habitacion:"<<endl<<endl;
 	for(int i=0; i<nPisos; i++){
 		for(int j=0; j<PISO[i].nHabitaciones; j++){
-			cout<<"   Piso #"<<i+1<<", Habitacion #"<<j+1<<" : "<<endl;
-			cout<<"   - Categoria: "; getline(cin, categoria);
-			PISO[i].categoriasHabitaciones[j]=categoria;
+			bool categoriaValida=false;
 			
-			// asignar precio basado en la categoria
-			for(int k=0; k<nCategorias; k++){
-				if(CATEGORIA[k]==categoria){
-					PISO[i].preciosHabitaciones[j]=PRECIO[k];
-					break;
+			cout<<"   Piso #"<<i+1<<", Habitacion #"<<j+1<<" : "<<endl;
+			do{
+				cout<<"   - Categoria: "; getline(cin, categoria);
+				categoriaValida=false;
+				
+				for(int k=0; k<nCategorias; k++){
+					if(CATEGORIA[k]==categoria){
+						PISO[i].categoriasHabitaciones[j]=categoria;
+						PISO[i].preciosHabitaciones[j]=PRECIO[k];
+						categoriaValida=true;
+						break;
+					}
 				}
-			}
+				
+				if(!categoriaValida){
+					cout<<"     >>> [ CATEGORIA NO REGISTRADA ] <<<"<<endl;
+				}
+			} while(!categoriaValida);
 			cout<<endl;
 		}
 	}
@@ -82,7 +91,7 @@ void iniciar(){
 	cout<<"======================================================"<<endl<<endl;    
 }
 
-void agregarHabitaciones(int pisoIndex) {
+void agregarHabitaciones(int pisoIndex){
 	int nNuevasHabitaciones;
 	string categoria;
 	
@@ -117,11 +126,11 @@ void editar(){
 	system("cls");
 	do{
 		cout<<"======================= EDITAR ======================="<<endl;
-		cout<<"1. Agregar piso"<<endl;
-		cout<<"2. Agregar habitacion"<<endl;
-		cout<<"0. Regresar"<<endl;
+		cout<<" 1. Agregar piso"<<endl;
+		cout<<" 2. Agregar habitacion"<<endl;
+		cout<<" 0. Regresar"<<endl;
 		cout<<"======================================================"<<endl;
-		cout<<"Seleccione una opcion: "; cin>>opcion;
+		cout<<" Seleccione una opcion: "; cin>>opcion;
 		cin.ignore();
 		
 		switch(opcion){
@@ -129,26 +138,31 @@ void editar(){
 				// agregar piso -> agregar habitaciones a nuevo piso
 				system("cls");
 				nPisos++;
-				cout<<"==================== AGREGAR PISO ===================="<<endl;
+				cout<<"==================== AGREGAR PISO ===================="<<endl<<endl;
 				cout<<"PISO #" <<nPisos<<" AGREGADO."<<endl;
 				cout<<"Desea agregar habitaciones ahora? (S/N): ";
 				cin>>agregarAhora;
 				cin.ignore();
-				if(agregarAhora='s'||agregarAhora='S')
+				cout<<endl;
+				
+				// agregar habitaciones ahora
+				if(agregarAhora=='s'||agregarAhora=='S')
 					agregarHabitaciones(nPisos-1);
 				break;
 				
 			case 2:
 				// agregar habitaciones a un piso existente
 				system("cls");
-				cout<<"================= AGREGAR HABITACION ================="<<endl;
+				cout<<"================= AGREGAR HABITACION ================="<<endl<<endl;
 				cout<<"Ingrese el piso (1-"<<nPisos<<"): ";
-				cin >> pisoIndex;
+				cin>>pisoIndex;
 				cin.ignore();
+				
 				if(pisoIndex>=1 && pisoIndex<=nPisos){
+					cout<<endl;
 					agregarHabitaciones(pisoIndex-1); 	
 				} else{
-					cout<<"Numero de piso invalido."<<endl<<endl;
+					cout<<">>> [ NUMERO DE PISO NO VALIDO ] <<<"<<endl<<endl;
 				}
 				break;		
 						
@@ -158,7 +172,7 @@ void editar(){
 				break;			
 					
 			default:
-				cout<<"Opcion invalida."<<endl;
+				cout<<" >>> [ OPCION NO VALIDA ] <<<"<<endl<<endl;
 				break;
 		}
 	} while(opcion!=0);
@@ -166,7 +180,7 @@ void editar(){
 
 void visualizar(){
 	system ("cls");
-	cout<<"===================== VISUALIZAR ====================="
+	cout<<"===================== VISUALIZAR ====================="<<endl;
 	
 	// encontrar el numero maximo de habitaciones en cualquier piso
 	int maxHabitaciones=0;
@@ -223,7 +237,7 @@ void mantenimiento(){
 				system("cls");
 				break;
 			default:
-				cout<<"Opcion no valida"<<endl;
+				cout<<" >>> [ OPCION NO VALIDA ] <<<"<<endl<<endl;
 				break;
 		}
 	} while(opcion!=0);
