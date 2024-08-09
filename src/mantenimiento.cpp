@@ -40,39 +40,34 @@ void iniciar(){
 	
 	system("pause");
 	system("cls");
-	   
-	// ingresar numero de habitaciones por piso
+	
+	// ingresar numero de habitaciones y asignar categorias por piso
 	for(int i=0; i<nPisos; i++){
 		cout<<"Numero de habitaciones en el piso #"<<i+1<<": "; cin>>PISO[i].nHabitaciones;
 		cin.ignore();
-	}
-	
-	// asignar categoria a cada habitacion
-	cout<<endl;
-	cout<<"Asigne categorias a cada habitacion:"<<endl<<endl;
-	for(int i=0; i<nPisos; i++){
+		
+		cout<<endl;
 		for(int j=0; j<PISO[i].nHabitaciones; j++){
 			bool categoriaValida=false;
-			
-			cout<<"   Piso #"<<i+1<<", Habitacion #"<<j+1<<" : "<<endl;
-			do{
-				cout<<"   - Categoria: "; getline(cin, categoria);
-				categoriaValida=false;
-				
-				for(int k=0; k<nCategorias; k++){
-					if(CATEGORIA[k]==categoria){
-						PISO[i].categoriasHabitaciones[j]=categoria;
-						PISO[i].preciosHabitaciones[j]=PRECIO[k];
-						categoriaValida=true;
-						break;
-					}
-				}
-				
-				if(!categoriaValida){
-					cout<<"     >>> [ CATEGORIA NO REGISTRADA ] <<<"<<endl;
-				}
-			} while(!categoriaValida);
-			cout<<endl;
+			cout<<"   Piso #" <<i+1<<", Habitacion #"<<j+1<<" :"<<endl;
+	        do{
+	            cout<<"   - Categoria: "; getline(cin, categoria);
+	            categoriaValida=false;
+	
+	            for(int k=0; k<nCategorias; k++){
+	                if(CATEGORIA[k]==categoria){
+	                    PISO[i].categoriasHabitaciones[j]=categoria;
+	                    PISO[i].preciosHabitaciones[j]=PRECIO[k];
+	                    categoriaValida=true;
+	                    break;
+	                }
+	            }
+	
+	            if(!categoriaValida){
+	                cout<<"     >>> [ CATEGORIA NO REGISTRADA ] <<<"<<endl;
+	            }
+	        } while(!categoriaValida);
+	        cout<<endl;
 		}
 	}
     
@@ -190,7 +185,7 @@ void editar(){
 
 void visualizar(){
 	system ("cls");
-	cout<<"===================== VISUALIZAR ====================="<<endl;
+	cout<<"===================== VISUALIZAR ====================="<<endl<<endl;
 	
 	// encontrar el numero maximo de habitaciones en cualquier piso
 	int maxHabitaciones=0;
