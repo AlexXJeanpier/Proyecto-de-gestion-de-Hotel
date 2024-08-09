@@ -53,7 +53,7 @@ void mostrarInicio(){
         cout << " 5. Reportes" << endl;
         cout << " 0. Salir" << endl;
         cout << "======================================================" << endl;
-        cout << "Seleccione una opcion:" << endl;
+        cout << "Seleccione una opcion:";
         cin >> opcion;
         switch (opcion){
             case 1:
@@ -77,9 +77,7 @@ void mostrarInicio(){
                 system ("pause");
             break;
             default:
-            system ("pause");
-            system("cls");
-            cout << "Opcion no valida." << endl;
+                cout << " >>> [ OPCION NO VALIDA ] <<<" << endl;
 
         }
     } while (opcion != 0);

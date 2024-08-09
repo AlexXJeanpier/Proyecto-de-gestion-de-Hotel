@@ -39,11 +39,11 @@ void gestion(){
 
 //Usa arreglos de mantenimiento.h
 void visualizarCategorias(){
-    cout<<"=============VISUALIZAR=============="<<endl;
+    cout<<"===================== VISUALIZAR ====================="<<endl;
     for(int i=0; i<nCategorias; i++){
-        cout<<"Categoria: "<<CATEGORIA[i]<<"-Precio.S/"<<PRECIO[i]<<endl;
+        cout<<"Categoria: "<<CATEGORIA[i]<<" - Precio.S/"<<PRECIO[i]<<endl;
     }
-    cout<<"======================================"<<endl;
+    cout<<"======================================================"<<endl;
     system ("pause");
     cin.ignore();
     cin.get();
@@ -59,12 +59,13 @@ void registrar_usuario(){
 
 
 void ingresarDatos_usuario(){
-    cout<<"Nombre: ";
+    cout << "------------------------------------------------------" << endl;
+    cout<<"- Nombre: ";
     cin.ignore();
     getline(cin,usuarios[posicionUsuarios].Nombre); //Desde la entrada va a leer el nombre completo
-    cout<<"DNI: ";
+    cout<<"- DNI: ";
     getline(cin,usuarios[posicionUsuarios].DNI);
-    cout<<"Edad: ";
+    cout<<"- Edad: ";
     cin>>usuarios[posicionUsuarios].edad;
     usuarios[posicionUsuarios].num_Habitacion=-1;
     cout << "Registrado correctamente" << endl;
@@ -93,18 +94,20 @@ int buscar_usuarioPorDNI(){
 void seleccionarHabitacion(int piso){
     //Se elimino la validacion del piso ya que esta en panel.cpp
 
-    cout<<"Habitaciones disponibles en el piso"<< piso << endl;
+    cout << "------------------------------------------------------" << endl;
+    cout<<"Habitaciones disponibles en el piso "<< piso << endl;
 
     for(int j=0;j <PISO[piso-1].nHabitaciones;j++){
         //si dentr esta el 0 es por ue esta desocupada
         if(ocupados[piso-1][j]==0){
-            cout<<"Habitacion "<< (j+1)<< "" << endl;
+            cout<<" - Habitacion #"<< (j+1)<< " : " << endl;
         }
     }
     cout<<endl;
 
     int num_Habitacion;
-    cout<<"numero de habitacion a reservar: ";
+    cout << "------------------------------------------------------" << endl;
+    cout<<"Numero de habitacion a reservar: ";
     cin>>num_Habitacion;
 
 //si es mayor que el numero de habitaciones y ocupar dicho valor en el vector
@@ -112,6 +115,11 @@ void seleccionarHabitacion(int piso){
         cout<<"Habitacion invalida"<<endl;
         return;
     }
+    cout << "Registrado exitosamente" << endl;
+    system ("pause");
+    factura[posicionUsuarios - 1].habiA = num_Habitacion;
+    factura[posicionUsuarios- 1].catA = PRECIO[posicionUsuarios];
+    //factura[posicionUsuarios - 1].catA = 
 
     //ocupar habitacion en panel
     ocupados[piso-1][num_Habitacion-1]=1;
@@ -123,6 +131,7 @@ void seleccionarHabitacion(int piso){
 //buscar_usuarioPorDNI ya no devuelve un valor 
 void reservarHabitacion(){
     system("cls");
+    int piso;
     
     int usuarioEncontrado = buscar_usuarioPorDNI();
 
@@ -133,7 +142,6 @@ void reservarHabitacion(){
                 cout<<"Usuario encontrado" <<endl;
                 system ("pause");
                 usuarioEncontrado=i;
-                break;
             }
         }
     }
@@ -149,9 +157,9 @@ void reservarHabitacion(){
         cout<<"Usted ya tiene una habitacion reservada"<<endl;
         return;
     } 
-//mantenimiento para saber los precios (lo muestra de manera superficial mejorar eso)
-visualizarCategorias();
-//funcion de panel.h
-verPanel();
 
+    //mantenimiento para saber los precios (lo muestra de manera superficial mejorar eso)
+    visualizarCategorias();
+    //funcion de panel.h
+    verPanel();
 }

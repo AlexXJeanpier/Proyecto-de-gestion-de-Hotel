@@ -42,7 +42,7 @@ struct Report {
     //SE NECESITA CAMBIO EN el nombre de las variables no se eniende que es
     float totalPagar;
     std::string habiA;
-    std::string catA;
+    float catA;
     float preA;
 };
 

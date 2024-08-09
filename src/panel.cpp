@@ -13,7 +13,8 @@ using namespace std;
 void verPanel(){
     mostrarPanel();
     int piso;
-    cout<<"Piso: "<< piso;
+    cout << "------------------------------------------------------" << endl;
+    cout<<" - Seleccione el piso: "; cin >> piso;
     if(!(piso >= 1 && piso <= nPisos)) {
         cout << "Piso invalido" << endl;
         return;
