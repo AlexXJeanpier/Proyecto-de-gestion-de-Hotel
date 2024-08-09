@@ -96,8 +96,8 @@ void completarPago(){
             encontrado = true;
             cout << "Monto a pagar del usuario:" << endl;
             cout << " Precio por cafeteria: "<< factura[i].totalPagar << endl;
-            cout << " Precio por habitacion: " << factura[i].catA << endl;
             factura[i].totalPagar += factura[i].catA;
+            cout << " Precio por habitacion: " << factura[i].catA << endl;
             cout << " TOTAL A PAGAR: " << factura[i].totalPagar << endl;
             cout << factura[i].nombre << " - $" << factura[i].totalPagar << endl;
             
