@@ -53,17 +53,26 @@ void iniciar(){
 	cout<<"Asigne categorias a cada habitacion:"<<endl<<endl;
 	for(int i=0; i<nPisos; i++){
 		for(int j=0; j<PISO[i].nHabitaciones; j++){
-			cout<<"   Piso #"<<i+1<<", Habitacion #"<<j+1<<" : "<<endl;
-			cout<<"   - Categoria: "; getline(cin, categoria);
-			PISO[i].categoriasHabitaciones[j]=categoria;
+			bool categoriaValida=false;
 			
-			// asignar precio basado en la categoria
-			for(int k=0; k<nCategorias; k++){
-				if(CATEGORIA[k]==categoria){
-					PISO[i].preciosHabitaciones[j]=PRECIO[k];
-					break;
+			cout<<"   Piso #"<<i+1<<", Habitacion #"<<j+1<<" : "<<endl;
+			do{
+				cout<<"   - Categoria: "; getline(cin, categoria);
+				categoriaValida=false;
+				
+				for(int k=0; k<nCategorias; k++){
+					if(CATEGORIA[k]==categoria){
+						PISO[i].categoriasHabitaciones[j]=categoria;
+						PISO[i].preciosHabitaciones[j]=PRECIO[k];
+						categoriaValida=true;
+						break;
+					}
 				}
-			}
+				
+				if(!categoriaValida){
+					cout<<"     >>> [ CATEGORIA NO REGISTRADA ] <<<"<<endl;
+				}
+			} while(!categoriaValida);
 			cout<<endl;
 		}
 	}
@@ -130,7 +139,7 @@ void editar(){
 				// agregar piso -> agregar habitaciones a nuevo piso
 				system("cls");
 				nPisos++;
-				cout<<"==================== AGREGAR PISO ===================="<<endl;
+				cout<<"==================== AGREGAR PISO ===================="<<endl<<endl;
 				cout<<"PISO #" <<nPisos<<" AGREGADO."<<endl;
 				cout<<"Desea agregar habitaciones ahora? (S/N): ";
 				cin>>agregarAhora;
@@ -145,7 +154,7 @@ void editar(){
 			case 2:
 				// agregar habitaciones a un piso existente
 				system("cls");
-				cout<<"================= AGREGAR HABITACION ================="<<endl<<endl;;
+				cout<<"================= AGREGAR HABITACION ================="<<endl<<endl;
 				cout<<"Ingrese el piso (1-"<<nPisos<<"): ";
 				cin>>pisoIndex;
 				cin.ignore();
