@@ -173,6 +173,7 @@ void anadirProductos(){
     cantidadProductos++;
     cout <<"Producto agregado con exito." << endl;
     cout << "======================================================" << endl;
+    system("pause");
 }
 
 void eliminarProductos(){
@@ -198,8 +199,10 @@ void eliminarProductos(){
         cantidadProductos--;
         cout <<"Producto eliminado con exito." << endl;
         cout << "======================================================" << endl;
+        system("pause");
     } 	else {
         	cout <<"Producto no encontrado." << endl;
             cout << "======================================================" << endl;
+            system("pause");
     	}
 }
