@@ -104,20 +104,30 @@ void agregarHabitaciones(int pisoIndex){
 	
 	cout<<endl;
 	for(int j=habitacionInicio; j<PISO[pisoIndex].nHabitaciones; j++){
-		cout<<"   Habitacion #"<<j+1<<" : "<<endl;
-		cout<<"   - Categoria: "; getline(cin, categoria);
-		PISO[pisoIndex].categoriasHabitaciones[j]=categoria;
+		bool categoriaValida=false;
 		
-		for(int k=0; k<nCategorias; k++){
-			if(CATEGORIA[k]==categoria){
-				PISO[pisoIndex].preciosHabitaciones[j]=PRECIO[k];
-				break;
+		cout<<"   Habitacion #"<<j+1<<" : "<<endl;
+		do{
+			cout<<"   - Categoria: "; getline(cin, categoria);
+			categoriaValida=false;
+			
+			for(int k=0; k<nCategorias; k++){
+				if(CATEGORIA[k]==categoria){
+					PISO[pisoIndex].categoriasHabitaciones[j]=categoria;
+					PISO[pisoIndex].preciosHabitaciones[j]=PRECIO[k];
+					categoriaValida=true;
+					break;
+				}
 			}
-		}
+			
+			if(!categoriaValida){
+				cout<<"     >>> [ CATEGORIA NO REGISTRADA ] <<<"<<endl;			
+			}
+		} while(!categoriaValida);
 		cout<<endl;
 	}
 }
-
+		
 void editar(){
 	int opcion;
 	int pisoIndex;
