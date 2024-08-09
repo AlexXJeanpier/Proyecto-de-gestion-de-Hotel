@@ -63,7 +63,6 @@ void ingresarDatos_usuario(){
     cin.ignore();
     getline(cin,usuarios[posicionUsuarios].Nombre); //Desde la entrada va a leer el nombre completo
     cout<<"DNI: ";
-    cin.ignore();
     getline(cin,usuarios[posicionUsuarios].DNI);
     cout<<"Edad: ";
     cin>>usuarios[posicionUsuarios].edad;
@@ -78,16 +77,15 @@ void ingresarDatos_usuario(){
 
 //Buscar al usuario por el DNI, pero no va a retornar unn valor por tanto se ha de usar  void
 int buscar_usuarioPorDNI(){
+    cout<<"Ingrese su DNI: ";
+    cin>>dni;
     for(int i=0; i<TotalUsuarios;i++){
-        if(usuarios[i].DNI==dni){
+        if(dni == usuarios[i].DNI){
             //Usuario encontrado
-            cout<<"Usuario encontrado" <<endl;
-            system ("pause");
             return 1;
         }
     }
-    //No es necesario que retorne algo ya que es unna funcion void
-    cout<<"Usuario no encontrado" << endl;
+
     return -1;
 }
 
@@ -95,12 +93,12 @@ int buscar_usuarioPorDNI(){
 void seleccionarHabitacion(int piso){
     //Se elimino la validacion del piso ya que esta en panel.cpp
 
-    cout<<"Habitaciones disponibles en el piso"<< piso <<":\n";
+    cout<<"Habitaciones disponibles en el piso"<< piso << endl;
 
     for(int j=0;j <PISO[piso-1].nHabitaciones;j++){
         //si dentr esta el 0 es por ue esta desocupada
         if(ocupados[piso-1][j]==0){
-            cout<<"Habitacion"<< (j+1)<< "";
+            cout<<"Habitacion "<< (j+1)<< "" << endl;
         }
     }
     cout<<endl;
@@ -125,8 +123,6 @@ void seleccionarHabitacion(int piso){
 //buscar_usuarioPorDNI ya no devuelve un valor 
 void reservarHabitacion(){
     system("cls");
-    cout<<"Ingrese su DNI: ";
-    cin>>dni;
     
     int usuarioEncontrado = buscar_usuarioPorDNI();
 
@@ -134,6 +130,8 @@ void reservarHabitacion(){
     if(usuarioEncontrado==1){
         for(int i=0;i<TotalUsuarios;i++){
             if(usuarios[i].DNI==dni){
+                cout<<"Usuario encontrado" <<endl;
+                system ("pause");
                 usuarioEncontrado=i;
                 break;
             }

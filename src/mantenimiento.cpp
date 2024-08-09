@@ -74,7 +74,7 @@ void iniciar(){
     
 	// mostrar categorias y precios asignados a las habitaciones
 	cout<<"------------------------------------------------------"<<endl;
-	cout<<"Categorias asignadas a cada habitaciones:"<<endl;
+	cout<<"Categorias asignadas a cada habitacion:"<<endl;
 	for(int i=0; i<nPisos; i++){
 		cout<<endl;
 		cout<<"   Piso #"<<i+1<<":"<<endl;

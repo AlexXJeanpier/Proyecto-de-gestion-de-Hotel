@@ -19,7 +19,7 @@ struct USUARIO {
     std::string Nombre;
     int edad;
     int num_Habitacion;
-    std::string categoria_Habitacion;
+    std::string precioCategoria;
     std::string DNI;
 };
 

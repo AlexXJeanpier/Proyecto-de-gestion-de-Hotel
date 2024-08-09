@@ -63,13 +63,13 @@ void mostrarProductos() {
 
 void venderProductos(){
 	string fin = "si";
-    string dni;
+    string dniCafeteria;
     bool hayDNI = false;
     cout << "Ingrese el DNI del huesped: ";
-    cin >> dni;
+    cin >> dniCafeteria;
     cin.ignore();
     for (int i = 0; i < 100; i++ ){
-        if (dni == usuarios[i].DNI){
+        if (dniCafeteria == usuarios[i].DNI){
             hayDNI = true;
             break;
         }
@@ -105,7 +105,7 @@ void venderProductos(){
                 cout <<"Producto no encontrado." << endl;
             }
             cout << endl;
-            cout <<"Desea comparar algun producto mas?s/n ";cin >> fin;
+            cout <<"Desea comprar algun producto mas?s/n ";cin >> fin;
             cin.ignore();
             if (fin == "no"){
                 break;  
@@ -135,7 +135,7 @@ void venderProductos(){
                 cout << menu[i].nombre;
                 cout <<"                              "<< cantidadProducto <<"      "<< subtotal << '\n';
                 for (int k = 0; k < 100; k++){
-                    if (dni == usuarios[i].DNI){
+                    if (dniCafeteria == usuarios[i].DNI){
                         factura[i].nombre = usuarios[i].Nombre;
                         factura[i].DNI = usuarios[i].DNI;
                         factura[i].totalPagar = subtotal;
@@ -145,7 +145,7 @@ void venderProductos(){
             }
         }
        
-        cout <<"------------------------------------------------------";
+        cout <<"------------------------------------------------------" << endl;
         cout <<"Total: "<< total << endl;
         system("pause");
     }

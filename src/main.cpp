@@ -29,6 +29,7 @@ void mostrarDespedida(){
 	
 }
 void mostrarBienvenida(){
+    system ("cls");
     cout << "========== BIENVENIDO A LA GESTION DE HOTEL ==========" << endl;
     cout << "Antes de empezar:" << endl;
     cout << " - Diganos sus nombres: "; cin >> admin.NombreAdmin;

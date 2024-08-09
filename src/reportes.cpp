@@ -11,6 +11,7 @@ using namespace std;
 
 //interfaz de la funcion 
 void reportes(){
+    system("cls");
 
     int opcion;
 
@@ -39,18 +40,18 @@ void reportes(){
 void verHistorial(){
 
     system ("cls");
-    string dni;
+    string dniReportes;
     cout << "=================== VER HISTORIAL ====================" << endl;
     cout << "Ingrese el DNI del usuario cuyo historial desea ver: " << endl;
     cout << " - DNI: ";
     cin.ignore();
-    getline(cin, dni);
+    getline(cin, dniReportes);
     cout << "------------------------------------------------------" << endl;
 
     //busqueda del usuario por el DNI
     bool encontrado = false;
     for (int i = 0; i < TotalUsuarios; ++i) {
-        if (usuarios[i].DNI == dni) {
+        if (usuarios[i].DNI == dniReportes) {
             encontrado = true;
             // Se va a mostrar la información del usuario
             cout << "Datos del usuario encontrado:" << endl << endl;
@@ -80,21 +81,21 @@ void verHistorial(){
 
 //se empieza por buscar de nuevo su DNI
 void completarPago(){
-    string dni;
+    string dniPago;
     system("cls");
     cout << "================= COMPLETAR UN PAGO ==================" << endl;
     cout << "Ingrese el DNI del usuario para completar el pago: " << endl;
     cout << " - DNI: ";
     cin.ignore();
-    getline(cin, dni);
+    getline(cin, dniPago);
     cout << "------------------------------------------------------" << endl;
 
     bool encontrado = false;
     for (int i = 0; i < TotalUsuarios; ++i) {
-        if (factura[i].DNI == dni) {
+        if (factura[i].DNI == dniPago) {
             encontrado = true;
             cout << "Monto a pagar del usuario:" << endl;
-            cout << " Precio por cafeteria: " << endl;
+            cout << " Precio por cafeteria: "<< factura[i].totalPagar << endl;
             cout << " Precio por habitacion: " << endl;
             cout << " TOTAL A PAGAR: " << endl;
             cout << factura[i].nombre << " - $" << factura[i].totalPagar << endl;
@@ -111,7 +112,7 @@ void completarPago(){
             } else {
                 factura[i].totalPagar -= montoPago;
                 cout << "------------------------------------------------------" << endl;
-                cout << "Pago completado. La nueva deuda del usuario " << factura[i].nombre << " es: $" << usuarios[i].deuda<< endl;
+                cout << "Pago completado. La nueva deuda del usuario " << factura[i].nombre << " es: $" << usuarios[i].precioCategoria<< endl;
             }
             break;
         }
