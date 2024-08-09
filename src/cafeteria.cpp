@@ -62,32 +62,26 @@ void mostrarProductos(){
 }
 
 void venderProductos(){
-
-    system ("cls");
 	string fin = "si";
     string dni;
     bool hayDNI = false;
-    cout << "================== VENDER PRODUCTOS ==================" << endl;
-    cout << "Ingrese el DNI del usuario: " << endl;
-    cout << " - DNI: ";
+    cout << "Ingrese el DNI del huesped: ";
     cin >> dni;
-    cout << "------------------------------------------------------" << endl;
     for (int i = 0; i < 100; i++ ){
         if (dni == usuarios[i].DNI){
             hayDNI = true;
-            break;
         }
     }
     if (hayDNI){
         int cantidadSeleccion = 0;
         string nombre;
         int cantidad;
-        float total = 0;
-        cout <<"Digite lo que desee: "<<endl;
+        system("cls");
+        cout <<"Ingrese los productos que desee.\n";
        
-        while (fin == "si") {
+        while (true) {
         	
-            cout <<" - Nombre del producto: "; cin >> nombre;
+            cout <<"Nombre del producto: "; cin >> nombre;
            
             int i = 0;
             for (i = 0; i < cantidadProductos; i++) {
@@ -96,31 +90,32 @@ void venderProductos(){
                 }
             }
             if (i < cantidadProductos) {
-                cout <<" - Cantidad del producto a comprar: ";
+                cout <<"Ingrese la cantidad del producto a comprar: ";
                 cin >> cantidad;
-                cout << "------------------------------------------------------" << endl;
                 cin.ignore();
                 for (int j = 0; j < cantidad; j++) {
                     seleccion[cantidadSeleccion] = menu[i];
                     cantidadSeleccion++;
                 }
             } else {
-                cout <<"Producto no encontrado." << endl;
-                cout << "------------------------------------------------------" << endl;
+                cout <<"Producto no encontrado.\n";
             }
             cout << endl;
-            cout <<"Desea comprar algun producto mas?si/no: ";cin >> fin;
+            cout <<"Desea comparar algun producto mas?s/n ";cin >> fin;
+            if (fin == "no"){
+                break;  
+            }
         }
-        
-        if (cantidadSeleccion <= 0) {
-            cout <<"No se ha seleccionado ningun producto." << endl;
+        if (cantidadSeleccion == 0) {
+            cout <<"No se ha seleccionado ningun producto.\n";
             return;
         }
-        
+       	
        	system("cls");
-        cout <<"====================== FACTURA =======================:" << endl;
-        cout <<"Producto                        Cantidad  Subtotal" << endl;
-        cout <<"------------------------------------------------------" << endl;
+        float total = 0;
+        cout <<"Factura:\n";
+        cout <<"Producto                        Cantidad  Subtotal\n";
+        cout <<"----------------------------------------------\n";
        
         for (int i = 0; i < cantidadProductos; i++) {
             int cantidadProducto = 0;
@@ -144,13 +139,14 @@ void venderProductos(){
                 }
             }
         }
-       
-        cout <<"------------------------------------------------------" << endl;
-        cout <<"Total: "<< total << endl;
+        cout <<"----------------------------------------------\n";
+        cout <<"Total: "<< total << '\n';
+        system("pause");
     }
     else {
-        cout << "Usuario no encontrado"<<endl;
-	}
+        cout << "\nUsuario no encontrado" << endl;
+        system("pause");
+    }
 }
 
 void anadirProductos(){
