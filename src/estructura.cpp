@@ -2,9 +2,10 @@
 #include <string>
 //Inicializacion de las variables
 
-//reportes
+
 ADMIN admin;
 
+//reportes
 Report factura[100];
 int facturados = 0;
 int facturadosGestion = 0;

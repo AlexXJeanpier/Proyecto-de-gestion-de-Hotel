@@ -31,7 +31,7 @@ void gestion(){
             case 0:
                 break;
             default:
-                cout<<"Opcion incorrecta\n";
+                cout<<" >>> [ OPCION NO VALIDA ] <<<" << endl;
         }
     }while(opcion !=0);
 }
@@ -44,7 +44,7 @@ void visualizarCategorias(){
         cout<<"Categoria: "<<CATEGORIA[i]<<"-Precio.S/"<<PRECIO[i]<<endl;
     }
     cout<<"======================================"<<endl;
-    cout<<"presione enter para continuar..";
+    system ("pause");
     cin.ignore();
     cin.get();
 }
@@ -68,24 +68,27 @@ void ingresarDatos_usuario(){
     cout<<"Edad: ";
     cin>>usuarios[posicionUsuarios].edad;
     usuarios[posicionUsuarios].num_Habitacion=-1;
+    cout << "Registrado correctamente" << endl;
+    system ("pause");
     //en cada iteracion se va a incrementar 
     posicionUsuarios++;
     //Cada usuario posee su posicion
     TotalUsuarios=posicionUsuarios;
-}
-
+} 
 
 //Buscar al usuario por el DNI, pero no va a retornar unn valor por tanto se ha de usar  void
- void buscar_usuarioPorDNI(){
+int buscar_usuarioPorDNI(){
     for(int i=0; i<TotalUsuarios;i++){
         if(usuarios[i].DNI==dni){
             //Usuario encontrado
-            cout<<"Usuario encontrado en la posicionn "<<i<<endl;
-            return;
+            cout<<"Usuario encontrado" <<endl;
+            system ("pause");
+            return 1;
         }
     }
     //No es necesario que retorne algo ya que es unna funcion void
-    cout<<"Usuario no encontrado\n";
+    cout<<"Usuario no encontrado" << endl;
+    return -1;
 }
 
 
@@ -125,11 +128,10 @@ void reservarHabitacion(){
     cout<<"Ingrese su DNI: ";
     cin>>dni;
     
-    buscar_usuarioPorDNI();
+    int usuarioEncontrado = buscar_usuarioPorDNI();
 
-    int usuarioEncontrado;
     //Verificar si tiene o no una habitacion
-    if(usuarioEncontrado==-1){
+    if(usuarioEncontrado==1){
         for(int i=0;i<TotalUsuarios;i++){
             if(usuarios[i].DNI==dni){
                 usuarioEncontrado=i;

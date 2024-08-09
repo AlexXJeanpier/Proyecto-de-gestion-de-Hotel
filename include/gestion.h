@@ -9,7 +9,7 @@
 void registrar_usuario();
 void ingresarDatos_usuario();
 void reservarHabitacion();
-void buscar_usuarioPorDNI();
+int buscar_usuarioPorDNI();
 void visualizarCategorias_usuario();
 void seleccionarHabitacion(int piso);
 void gestion();

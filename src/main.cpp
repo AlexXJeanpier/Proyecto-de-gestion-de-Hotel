@@ -34,17 +34,16 @@ void mostrarBienvenida(){
     cout << " - Diganos sus nombres: "; cin >> admin.NombreAdmin;
     cout << " - Diganos el nombre del hotel: "; cin >> admin.nombreHotel;
     cout << system("cls");
-    cout << "Bienvenido " << admin.NombreAdmin << endl;
 }
 
 void mostrarInicio(){
     int opcion;
-    system ("cls");
     
     do {
         system ("cls");
+        cout << "Bienvenido " << admin.NombreAdmin << endl;
+        cout << "Nombre de hotel: " << admin.nombreHotel<< endl;
         cout << "================== GESTION DE HOTEL ==================" << endl;
-        cout << "        " << admin.nombreHotel << endl;
         cout << "======================= INICIO =======================" << endl;
         cout << " 1. Panel" << endl;
         cout << " 2. Gestion" << endl;

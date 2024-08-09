@@ -39,7 +39,7 @@ void mostrarPanel() {
         }
         cout << endl;
     }
-    cout << "Presione Enter para continuar...";
+    system ("pause");
     cin.ignore();
     cin.get();
 }
@@ -79,7 +79,7 @@ void panel() {
         cout << "2. Mostrar total de habitaciones" << endl;
         cout << "0. Salir" << endl;
         cout << "===============================================" << endl;
-        cout << "Digite una opcion: "; cin >> opcion;
+        cout << "Seleccione una opcion: "; cin >> opcion;
        
         switch(opcion){
             case 1:
@@ -93,7 +93,7 @@ void panel() {
                 system("cls");
                 break;              
             default:
-                cout<<"Opcion no valida"<<endl;
+                cout<<" >>> [ OPCION NO VALIDA ] <<<"<<endl;
                 break;
         }
     } while(opcion!=0);

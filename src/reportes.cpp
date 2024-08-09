@@ -29,7 +29,7 @@ void reportes(){
             case 2: 
                 completarPago();
             default:
-                cout << "Opcion no valida."<< endl;
+                cout << " >>> [ OPCION NO VALIDA ] <<<"<< endl;
                 system ("cls");
         }
     } while (opcion != 0); 
@@ -123,5 +123,4 @@ void completarPago(){
         system ("pause");
         cout << "======================================================" << endl;
     }
-
 }
