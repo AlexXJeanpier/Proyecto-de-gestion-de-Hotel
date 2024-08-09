@@ -139,7 +139,6 @@ void venderProductos(){
                 }
             }
         }
-       
         cout <<"----------------------------------------------\n";
         cout <<"Total: "<< total << '\n';
         system("pause");
