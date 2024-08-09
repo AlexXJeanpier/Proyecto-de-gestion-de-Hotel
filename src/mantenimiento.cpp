@@ -232,8 +232,13 @@ void mantenimiento(){
 				iniciar();
 				break;
 			case 2:
-				editar();
-				break;
+				if(nPisos==0){
+                    cout<<" >>> [ AUN NO TIENE DATOS REGISTRADOS ] <<<"<<endl;
+					cout<<"         Configure INICIAR primero."<<endl<<endl;
+                } else{
+                    editar();
+                }
+                break;
 			case 3:
 				visualizar();
 				break;
