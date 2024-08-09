@@ -49,16 +49,15 @@ void cafeteria(){
     }
 }
 
-void mostrarProductos(){
-    system("cls"); 
-    cout <<"================= MOSTRAR PRODUCTOS ==================" << endl;
-    cout <<"Producto                        Precio" << endl;
-    cout <<"------------------------------------------------------" << endl;
+void mostrarProductos() {
+    system("cls");
+    cout << "Menu de Cafeteria:\n";
+    cout << left << setw(30) << "Producto" << "Precio\n"; // Define ancho para la columna de productos
+    cout << "--------------------------------------\n";
+    
     for (int i = 0; i < cantidadProductos; i++) {
-        cout << menu[i].nombre;
-        cout <<"                          " << menu[i].precio << endl;
-    }
-    cout << "======================================================" << endl;
+        cout << left << setw(30) << menu[i].nombre << menu[i].precio << '\n';
+    }
 }
 
 void venderProductos(){
@@ -67,25 +66,29 @@ void venderProductos(){
     bool hayDNI = false;
     cout << "Ingrese el DNI del huesped: ";
     cin >> dni;
+    cin.ignore();
     for (int i = 0; i < 100; i++ ){
         if (dni == usuarios[i].DNI){
             hayDNI = true;
+            break;
         }
     }
     if (hayDNI){
         int cantidadSeleccion = 0;
-        string nombre;
+        char nombre[30];
         int cantidad;
         system("cls");
         cout <<"Ingrese los productos que desee.\n";
        
         while (true) {
         	
-            cout <<"Nombre del producto: "; cin >> nombre;
+            cout <<"Nombre del producto: "; cin.getline(nombre, 30);
+            
+            string nombreProducto(nombre);
            
             int i = 0;
             for (i = 0; i < cantidadProductos; i++) {
-                if (menu[i].nombre == nombre) {
+                if (menu[i].nombre == nombreProducto) {
                     break;
                 }
             }
@@ -102,6 +105,7 @@ void venderProductos(){
             }
             cout << endl;
             cout <<"Desea comparar algun producto mas?s/n ";cin >> fin;
+            cin.ignore();
             if (fin == "no"){
                 break;  
             }
@@ -139,6 +143,7 @@ void venderProductos(){
                 }
             }
         }
+       
         cout <<"----------------------------------------------\n";
         cout <<"Total: "<< total << '\n';
         system("pause");
@@ -146,7 +151,7 @@ void venderProductos(){
     else {
         cout << "\nUsuario no encontrado" << endl;
         system("pause");
-    }
+    }
 }
 
 void anadirProductos(){
