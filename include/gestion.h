@@ -2,30 +2,17 @@
 #ifndef Gestion_H
 #define Gestion_H
 
-#include <string>
-#include <vector>
-
-using namespace std;
-
-//Registros
-struct USUARIO{
-    string Nombre;
-    int edad;
-    int num_Habitacion;
-    string DNI;
-};
-
-//Variables globales
-USUARIO usuarios[100];
-int TotalUsuarios;
+//Libreria que contiene los registros y arreglos 
+#include "estructura.h"
 
 //FUCIONES DE LA LIBRERIA gestion.h
-
-//Registrar usuario
 void registrar_usuario();
-//Mostrar habitaciones disponibles (nivel terminal o usando GUI)
-//Reservar Habitaciones
-//Revisiom de la salida (pago)
-//Liberar habitacion
+void ingresarDatos_usuario();
+void reservarHabitacion();
+void buscar_usuarioPorDNI();
+void visualizarCategorias_usuario();
+void seleccionarHabitacion(int piso);
+void gestion();
 
-#endif
+//Mostrar las reservas
+#endif //Fin de Gestion

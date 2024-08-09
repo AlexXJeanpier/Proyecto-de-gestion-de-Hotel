@@ -1,0 +1,135 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "create build directory",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "if (-not (Test-Path -Path build)) { New-Item -ItemType Directory -Path build }"
+            ]
+        },
+        {
+            "label": "compile main",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-I", "include",
+                "-c", "src/main.cpp",
+                "-o", "build/main.o"
+            ],
+            "group": "build",
+            "dependsOrder": "sequence",
+            "dependsOn": "create build directory"
+        },
+        {
+            "label": "compile cafeteria",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-I", "include",
+                "-c", "src/cafeteria.cpp",
+                "-o", "build/cafeteria.o"
+            ],
+            "group": "build",
+            "dependsOrder": "sequence",
+            "dependsOn": "create build directory"
+        },
+        {
+            "label": "compile gestion",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-I", "include",
+                "-c", "src/gestion.cpp",
+                "-o", "build/gestion.o"
+            ],
+            "group": "build",
+            "dependsOrder": "sequence",
+            "dependsOn": "create build directory"
+        },
+        {
+            "label": "compile mantenimiento",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-I", "include",
+                "-c", "src/mantenimiento.cpp",
+                "-o", "build/mantenimiento.o"
+            ],
+            "group": "build",
+            "dependsOrder": "sequence",
+            "dependsOn": "create build directory"
+        },
+        {
+            "label": "compile panel",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-I", "include",
+                "-c", "src/panel.cpp",
+                "-o", "build/panel.o"
+            ],
+            "group": "build",
+            "dependsOrder": "sequence",
+            "dependsOn": "create build directory"
+        },
+        {
+            "label": "compile reportes",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-I", "include",
+                "-c", "src/reportes.cpp",
+                "-o", "build/reportes.o"
+            ],
+            "group": "build",
+            "dependsOrder": "sequence",
+            "dependsOn": "create build directory"
+        },
+        {
+            "label": "compile estructura",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-I", "include",
+                "-c", "src/estructura.cpp",
+                "-o", "build/estructura.o"
+            ],
+            "group": "build",
+            "dependsOrder": "sequence",
+            "dependsOn": "create build directory"
+        },
+        {
+            "label": "link",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "build/main.o",
+                "build/cafeteria.o",
+                "build/gestion.o",
+                "build/mantenimiento.o",
+                "build/panel.o",
+                "build/reportes.o",
+                "build/estructura.o",
+                "-o",
+                "Hotel.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "compile main",
+                "compile cafeteria",
+                "compile gestion",
+                "compile mantenimiento",
+                "compile panel",
+                "compile reportes",
+                "compile estructura"
+            ]
+        }
+    ]
+}
